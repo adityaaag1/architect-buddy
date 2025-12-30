@@ -68,7 +68,7 @@ export function ArchitectureDiagram({ architecture, isLoading }: ArchitectureDia
               <span className="text-4xl">🎯</span>
             </div>
             <p className="text-muted-foreground max-w-sm">
-              Enter your system requirements above, then click "Generate Architecture" to see your AI-designed system.
+              Enter your system requirements above, then click "Generate Architecture" to see your system design.
             </p>
           </div>
         </CardContent>

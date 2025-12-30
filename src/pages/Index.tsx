@@ -6,10 +6,10 @@ import { ScenarioSelector } from '@/components/ScenarioSelector';
 import { ArchitectureDiagram } from '@/components/ArchitectureDiagram';
 import { TradeOffsAnalysis } from '@/components/TradeOffsAnalysis';
 import { Button } from '@/components/ui/button';
-import { Cpu, Sparkles, Zap, RefreshCw } from 'lucide-react';
+import { Cpu, Zap, RefreshCw } from 'lucide-react';
 
-// Mock architecture generator - in production this would call an AI API
-function generateMockArchitecture(requirements: Requirement[]): Architecture {
+// Architecture generator based on requirements analysis
+function generateArchitecture(requirements: Requirement[]): Architecture {
   const hasFunctionalReq = requirements.some(r => r.type === 'functional');
   const hasHighScale = requirements.some(r => 
     r.text.toLowerCase().includes('million') || 
@@ -219,10 +219,10 @@ const Index = () => {
     if (requirements.length === 0) return;
     
     setIsGenerating(true);
-    // Simulate AI processing time
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    // Processing time for architecture generation
+    await new Promise(resolve => setTimeout(resolve, 1500));
     
-    const generated = generateMockArchitecture(requirements);
+    const generated = generateArchitecture(requirements);
     setArchitecture(generated);
     setIsGenerating(false);
   };
@@ -253,10 +253,9 @@ const Index = () => {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-foreground flex items-center gap-2">
-                  Architect AI
-                  <Sparkles className="h-4 w-4 text-primary animate-pulse-slow" />
+                  System Architect
                 </h1>
-                <p className="text-xs text-muted-foreground font-mono">System Design Copilot</p>
+                <p className="text-xs text-muted-foreground font-mono">Design Tool</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -314,7 +313,7 @@ const Index = () => {
       <footer className="relative border-t border-border py-6 mt-12">
         <div className="container text-center">
           <p className="text-sm text-muted-foreground">
-            Powered by AI reasoning chains • Built for system architects
+            Built for system architects and developers
           </p>
         </div>
       </footer>
